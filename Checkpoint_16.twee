@@ -1,0 +1,48 @@
+:: StoryTitle
+Checkpoint 16
+
+
+:: StoryData
+{
+  "ifid": "A906FA3C-0DF2-4AE6-8F1F-A5891D734555",
+  "format": "Harlowe",
+  "format-version": "3.3.7",
+  "start": "Introduction",
+  "zoom": 1
+}
+
+:: Testing {"position":"1000,1000","size":"100,100"}
+Testing: Using VScode to edit twee document
+
+:: Intro 2 {"position":"925,325","size":"100,100"}
+That’s where we came in.
+
+Me and Mira. We started the agency, built it from the ground up with just our heads on our shoulders and a (I say bargained, Mira prefers to say “stolen”) key to the cheapest permanent office we could find.
+
+It’s been three weeks since Mira took off for the Cypher Diamond case. Largest natural sapphire/diamond found at the bottom of Europa VII’s ocean, stolen under the all-seeing eye of the Barge’s best law enforcement and military squads. She usually sprints home the second she’s done, I can’t imagine what’s keeping her.
+
+That’s bad.
+
+(Really, extremely, kind of bad.)
+
+[[Next ->Intro 3]]
+
+
+:: Intro 3 {"position":"1050,325","size":"100,100"}
+I looked into the logs. The only thing of note was a non-automated message from Checkpoint 16.
+
+Checkpoint 16 is one of many rest-stops strewn across the galaxies where all sorts of person can find respite. 
+Though, this one is definitely out of my comfort zone. An illustrious, opulent seven-star hotel that Mira would probably dream of for our future fifty-year anniversary vacation.
+
+I already tried contacting every organization I could- no dice, since neither I nor the agency are “of great repute” (or rather, we’re totally unknown) to all Checkpoint-neutral associations. 
+
+I’ll probably be in the red for the foreseeable future. I’ve got a two-way economy ticket and a one day, one night reservation at Checkpoint 16. I’ll have to do what I do best: uncover the truth using everything at my disposal.
+
+[[Test->Testing]]
+
+:: Introduction {"position":"800,325","size":"100,100"}
+Technology allowed us to reach beyond the stars. You can too”. A phrase repeated on every street, every colony and every planet. With interstellar travel a reality, humanity has explored, conquered and, quote-unquote, developed hundreds of cosmic civilizations.
+
+Nevertheless, here are some jobs that robots and AI can’t replace, can’t replicate with enough humanity as people. For one, galactic peace hasn’t been easy- crime in the form of immorality and brutality exists in every corner of every galaxy and every empire.
+
+[[Next->Intro 2]]
