@@ -6,3 +6,4 @@ A text based game built in twine
 
 Team Members: 
 Jenny Lee
+Samuel Anderson
