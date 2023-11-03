@@ -7,12 +7,45 @@ Checkpoint 16
   "ifid": "A906FA3C-0DF2-4AE6-8F1F-A5891D734555",
   "format": "Harlowe",
   "format-version": "3.3.7",
-  "start": "Introduction",
+  "start": "Cover_Page",
   "zoom": 1
 }
 
-:: Testing {"position":"1000,1000","size":"100,100"}
-Testing: Using VScode to edit twee document
+
+:: Bellhop 1 {"position":"800,50","size":"100,100"}
+<span class="bellhop">I’ll take it from here. I’m Bellhop. I’ll take your belongings so please follow me.</span>
+
+<span class="main-char">What do you do at Checkpoint 16 as a bellhop?</span>
+
+(click: "What do you do at Checkpoint 16 as a bellhop?")[<span class="bellhop">I mostly move luggage for guests and do some handiwork and IT when they need it. The usual stuff is pretty repetitive- I’m just an attendant, really.</span>]
+
+<span class="main-char">How’d you end up working at this establishment?</span>
+
+(click: "How’d you end up working at this establishment?")[<span class="bellhop">I got the job through some connections. These types of places are usually backed by huge families or organizations so I’d say I got lucky, too, since I have a particular skill set. Anyways, the job pays well and I have time for other work so I’m not complaining.</span>]
+
+<span class="main-char"> Has anything big happened recently? Anyone of note or interest come your way?</span>
+
+(click: "Has anything big happened recently? Anyone of note or interest come your way?")[<span class="bellhop">I haven’t heard much about big happenings. By anyone you mean guests and I’m not supposed to talk about them. Privacy and security reasons.</span>
+
+ [[I see. I won’t pry too much, then.|choice1]](set: $choice1 to false)
+ [[About the guests.|choice2]](set: $choice2 to false)
+ [[Can you help me.|choice2]](set: $choice2 to false)
+ 
+ (if:$choice1 is true)[Thanks. Probably better for me and you if we avoid the topic anyways.]
+ (if:$choice2 is true)[Don’t try to bribe me for pictures or guests or names or keys or whatever. I’m not into messing with people and snooping around. Besides, if I report you then that’s less work for me.]
+]
+
+<span class="main-char"> Can we head to my room?</span>
+
+(click-replace: "Can we head to my room?")[<span class="bellhop">I Right. Let me see… You’re on floor 256. What’s the occasion?</span>]
+
+
+:: Cover_Page {"position":"675,325","size":"100,100"}
+#(text-colour:cyan)+(text-style:"expand")+(align:"=><=")+(box:"=XXXXXXXX=")[Checkpoint 16]
+
+(align:"=><=")+(box:"=XXXXXXXX=")[Created by the A team] 
+(align:"=><=")+(box:"=XXXXXXXX=")[[START|Introduction]]
+
 
 :: Intro 2 {"position":"925,325","size":"100,100"}
 That’s where we came in.
@@ -38,7 +71,6 @@ I already tried contacting every organization I could- no dice, since neither I 
 
 I’ll probably be in the red for the foreseeable future. I’ve got a two-way economy ticket and a one day, one night reservation at Checkpoint 16. I’ll have to do what I do best: uncover the truth using everything at my disposal.
 
-[[Test->Testing]]
 
 :: Introduction {"position":"800,325","size":"100,100"}
 Technology allowed us to reach beyond the stars. You can too”. A phrase repeated on every street, every colony and every planet. With interstellar travel a reality, humanity has explored, conquered and, quote-unquote, developed hundreds of cosmic civilizations.
@@ -46,3 +78,23 @@ Technology allowed us to reach beyond the stars. You can too”. A phrase repeat
 Nevertheless, here are some jobs that robots and AI can’t replace, can’t replicate with enough humanity as people. For one, galactic peace hasn’t been easy- crime in the form of immorality and brutality exists in every corner of every galaxy and every empire.
 
 [[Next->Intro 2]]
+
+
+:: choice1 {"position":"800,175","size":"100,100"}
+(set:$choice1 to true)
+(go-to:"Bellhop 1")
+
+
+:: choice2 {"position":"925,175","size":"100,100"}
+(set:$choice2 to true)
+
+
+:: StoryStylesheet [stylesheet]
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Exo:wght@100&display=swap');
+
+.main-char{
+  font-family: Exo, serif;
+}
+
+.bellhop{
+  font-family: Code New Roman, serif;
