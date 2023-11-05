@@ -12,8 +12,7 @@ Checkpoint 16
 }
 
 
-:: Bellhop 1 {"position":"800,50","size":"100,100"}
-<span class="bellhop">I’ll take it from here. I’m Bellhop. I’ll take your belongings so please follow me.</span>
+:: Bellhop {"position":"925,50","size":"100,100"}
 
 <span class="main-char">What do you do at Checkpoint 16 as a bellhop?</span>
 
@@ -27,17 +26,49 @@ Checkpoint 16
 
 (click: "Has anything big happened recently? Anyone of note or interest come your way?")[<span class="bellhop">I haven’t heard much about big happenings. By anyone you mean guests and I’m not supposed to talk about them. Privacy and security reasons.</span>
 
- [[I see. I won’t pry too much, then.|choice1]](set: $choice1 to false)
- [[About the guests.|choice2]](set: $choice2 to false)
- [[Can you help me.|choice2]](set: $choice2 to false)
- 
- (if:$choice1 is true)[Thanks. Probably better for me and you if we avoid the topic anyways.]
- (if:$choice2 is true)[Don’t try to bribe me for pictures or guests or names or keys or whatever. I’m not into messing with people and snooping around. Besides, if I report you then that’s less work for me.]
+|links>[\
+(link: "I see. I won’t pry too much, then.")[
+	(replace: ?links)[<span class="bellhop">Thanks. Probably better for me and you if we avoid the topic anyways.</span>]
 ]
+
+(link: "About the guests...")[
+	(replace: ?links)[<span class="bellhop">Don’t try to bribe me for pictures or guests or names or keys or whatever. I’m not into messing with people and snooping around. Besides, if I report you then that’s less work for me.</span>]
+]
+
+(link: "Can you help me?")[
+	(replace: ?links)[<span class="bellhop">Don’t try to bribe me for pictures or guests or names or keys or whatever. I’m not into messing with people and snooping around. Besides, if I report you then that’s less work for me.</span>]
+]\
+]]
 
 <span class="main-char"> Can we head to my room?</span>
 
-(click-replace: "Can we head to my room?")[<span class="bellhop">I Right. Let me see… You’re on floor 256. What’s the occasion?</span>]
+(click-replace: "Can we head to my room?")[<span class="bellhop">I Right. Let me see… You’re on floor 256. What’s the occasion?</span>
+
+|links>[\
+(link: "Vacation, for myself. A reward.")[
+	(replace: ?links)[<span class="bellhop">I feel ya. I definitely need that break soon. The management here really breathes down your neck. Literally. My motions and biometrics are constantly tracked through the staff uniform.
+    
+    [[We're here]]</span>]
+]
+
+(link: "Someone special. I haven’t seen them much recently...")[
+	(replace: ?links)[<span class="bellhop">Oh. Sorry, I guess.
+    
+    [[We're here]]</span>]
+]
+
+(link: "Just felt like it. Don’t worry about it.")[
+	(replace: ?links)[<span class="bellhop">... I see. Yeah, OK. I get it. Sorry for inquiring.
+    
+    [[We're here]]</span>]
+]\
+]]
+
+
+:: Bellhop 1 {"position":"800,50","size":"100,100"}
+<span class="bellhop">I’ll take it from here. I’m Bellhop. I’ll take your belongings so please [[follow me|Bellhop]].</span>
+
+
 
 
 :: Cover_Page {"position":"675,325","size":"100,100"}
@@ -80,13 +111,8 @@ Nevertheless, here are some jobs that robots and AI can’t replace, can’t rep
 [[Next->Intro 2]]
 
 
-:: choice1 {"position":"800,175","size":"100,100"}
-(set:$choice1 to true)
-(go-to:"Bellhop 1")
+:: We're here {"position":"1050,50","size":"100,100"}
 
-
-:: choice2 {"position":"925,175","size":"100,100"}
-(set:$choice2 to true)
 
 
 :: StoryStylesheet [stylesheet]
@@ -98,3 +124,4 @@ Nevertheless, here are some jobs that robots and AI can’t replace, can’t rep
 
 .bellhop{
   font-family: Code New Roman, serif;
+}
