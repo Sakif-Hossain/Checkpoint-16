@@ -12,8 +12,21 @@ Checkpoint 16
 }
 
 
-:: Bellhop {"position":"925,50","size":"100,100"}
+:: Bellhop #1 {"position":"700,50","size":"100,100"}
+Location: $location<hr>
+<span class="bellhop">I’ll take it from here. I’m Bellhop. I’ll take your belongings so please [[follow me|Bellhop 1]].</span>
 
+
+
+
+:: Bellhop 1 {"position":"900,50","size":"100,100"}
+<style>
+	tw-link {
+    	font-family: Exo, serif;
+    }
+</style>
+
+Location: $location<hr>
 <span class="main-char">What do you do at Checkpoint 16 as a bellhop?</span>
 
 (click: "What do you do at Checkpoint 16 as a bellhop?")[<span class="bellhop">I mostly move luggage for guests and do some handiwork and IT when they need it. The usual stuff is pretty repetitive- I’m just an attendant, really.</span>]
@@ -42,7 +55,7 @@ Checkpoint 16
 
 <span class="main-char"> Can we head to my room?</span>
 
-(click-replace: "Can we head to my room?")[<span class="bellhop">I Right. Let me see… You’re on floor 256. What’s the occasion?</span>
+(click-replace: "Can we head to my room?")[<span class="bellhop">Right. Let me see… You’re on floor 256. What’s the occasion?</span>
 
 |links>[\
 (link: "Vacation, for myself. A reward.")[
@@ -65,10 +78,24 @@ Checkpoint 16
 ]]
 
 
-:: Bellhop 1 {"position":"800,50","size":"100,100"}
-<span class="bellhop">I’ll take it from here. I’m Bellhop. I’ll take your belongings so please [[follow me|Bellhop]].</span>
+:: Bellhop 2 {"position":"1300,50","size":"100,100"}
+<style>
+	tw-link {
+    	font-family: Exo, serif;
+    }
+</style>
+(set:$location to "Room")Location: $location<hr>
+<span class="bellhop">I put your luggage in the entrance. Let me know if you need anything else.</span>
 
+|links>[\
+(link: "Care to head in?")[
+	(replace: ?links)[<span class="bellhop">Very funny. I’m on the clock, y’know. I’ll be back at the front desk if you need me.</span>]
+]
 
+(link: "Thanks for the help.")[
+	(replace: ?links)[<span class="bellhop">No problem. I’ll be at the front desk on the first floor. I’d rather chat than stand there and wait to be bossed around all day long.</span>]
+]\
+]
 
 
 :: Cover_Page {"position":"675,325","size":"100,100"}
@@ -89,7 +116,7 @@ That’s bad.
 
 (Really, extremely, kind of bad.)
 
-[[Next ->Intro 3]]
+(align:"=><=")[[[>>>->Intro 3]]]
 
 
 :: Intro 3 {"position":"1050,325","size":"100,100"}
@@ -102,17 +129,49 @@ I already tried contacting every organization I could- no dice, since neither I 
 
 I’ll probably be in the red for the foreseeable future. I’ve got a two-way economy ticket and a one day, one night reservation at Checkpoint 16. I’ll have to do what I do best: uncover the truth using everything at my disposal.
 
+(align:"=><=")[[[>>>->Intro 4]]]
+
+
+:: Intro 4 {"position":"1175,325","size":"100,100"}
+(set:$location to "Lobby")Location: $location<hr>
+<span class="lia">Welcome to Checkpoint 16, dearest guest. We hope you enjoy the remainder of your stay for: twenty four hours. Please note the artificial day cycle, meaning you have: one day and one night, at our establishment amongst the stars. 
+
+Dear guest, you also have been given a special amenity to assist with your stay, me. I am LIA, I may answer your questions regarding Checkpoint 16, engage in robust conversation, and connect you with staff and other help whenever at your convenience.</span>
+
+Please confirm your reservation using LIA now.
+
+You can press the open button to access LIA.
+
+(b4r:"solid")+(b4r-size:1)+(b4r-colour:white)[[<span style="color: white;">OPEN|lia]]
+
+
 
 :: Introduction {"position":"800,325","size":"100,100"}
-Technology allowed us to reach beyond the stars. You can too”. A phrase repeated on every street, every colony and every planet. With interstellar travel a reality, humanity has explored, conquered and, quote-unquote, developed hundreds of cosmic civilizations.
+"Technology allowed us to reach beyond the stars. You can too”. A phrase repeated on every street, every colony and every planet. With interstellar travel a reality, humanity has explored, conquered and, quote-unquote, developed hundreds of cosmic civilizations.
 
 Nevertheless, here are some jobs that robots and AI can’t replace, can’t replicate with enough humanity as people. For one, galactic peace hasn’t been easy- crime in the form of immorality and brutality exists in every corner of every galaxy and every empire.
 
-[[Next->Intro 2]]
+(align:"=><=")[[[>>>->Intro 2]]]
 
 
-:: We're here {"position":"1050,50","size":"100,100"}
+:: We're here {"position":"1100,50","size":"100,100"}
+The beautiful, mirrored hallway leads to rooms on each side. As you hover your palm over the door,the lock faintly glows as the door opens automatically. This room is league nicer than the motels and hostels you’ve stayed at with Mira before. In the corner is a closet with some sort of fancy, abstract painting. On the opposite end is a little desk with a consumables synthesizer and a single bed. The bathroom is right at the door- inside it is darker and smaller, but certainly not dirty. The room seems to be well-kept and thoroughly cleaned often.
 
+(align:"=><=")[[[>>>->Bellhop 2]] 
+
+
+:: lia {"position":"1000,200","size":"100,100"}
+(set:$playerName to (prompt:"Enter your name: ", "Name"))
+Initializing LIA… 
+
+*You feel a buzz on your back, and when you turn your vision flashes to white and blurs.*
+
+<span class="lia">Downloading data…  Please wait…
+
+Confirmation acquired $playerName. We hope you enjoy your stay in paradise amongst the stars. </span>
+
+*Footsteps echo on the marble floor from behind you.*
+(align:"=><=")[[[>>>->Bellhop #1]]]
 
 
 :: StoryStylesheet [stylesheet]
@@ -125,3 +184,5 @@ Nevertheless, here are some jobs that robots and AI can’t replace, can’t rep
 .bellhop{
   font-family: Code New Roman, serif;
 }
+.lia{
+  font-family: Monaco, monospace;
