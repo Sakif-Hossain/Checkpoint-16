@@ -13,15 +13,15 @@ Checkpoint 16
 
 
 :: Ask About Work Life {"position":"1325,700","size":"100,100"}
-(set: $time = $time + 5)
-(set:$minutes = $time % 60)
-(if: $minutes is 0)[(set: $minutes to '00')]
-(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
-(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]
-(set: $bellhop = $bellhop + 1)
+(set: $time = $time + 5)\
+(set:$minutes = $time % 60)\
+(if: $minutes is 0)[(set: $minutes to '00')]\
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]\
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]\
+(set: $bellhop = $bellhop + 1)\
 
 Location: $location
-Time: $hours:$minutes$meridiem
+Time: $hours:$minutes$meridiem\
 <hr>
 *You only have a few minutes left before you reach your room, which question should you ask?*
 
@@ -43,7 +43,7 @@ The usual stuff is pretty repetitive- I’m just an attendant, really."</span>
 
 *As you contemplate what the Bellhop said, you arrive at your room.*
 
-(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]
+(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]\
 ]
 
 (Click:?Boring)[(replace: ?Flattery)[]
@@ -54,9 +54,8 @@ The usual stuff is pretty repetitive- I’m just an attendant, really."</span>
 
 <span class="bellhop">"Well, this is it. Your room."</span>
 
-(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]]
+(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]]\
 ]
-
 
 [<span class="main-char">How’d you end up working at this establishment?</span>]<Question2|
 
@@ -76,7 +75,7 @@ Anyways, the job pays well and I have time for other work so I’m not complaini
 
 *As you contemplate what the Bellhop said, you arrive at your room.*
 
-(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]
+(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]\
 ]
 
 (Click:?Suspicious)[(replace: ?Curious)[]
@@ -85,15 +84,14 @@ Anyways, the job pays well and I have time for other work so I’m not complaini
 
 *As you contemplate what the Bellhop said, you arrive at your room.*
 
-(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]]
+(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]]\
 ]
 
 
-
 :: Bellhop #1 {"position":"775,875","size":"100,100"}
-Location: $location
+Location: $location\
 <hr>
-<span class="bellhop">
+<span class="bellhop">\
 "Hello, I’ll take it from here!"
 "I’m Bellhop... and well, I'm a bellhop here at Checkpoint 16.
 I know, haha, very funny. 
@@ -107,16 +105,16 @@ Anywho, pass me your belongings and I'll take you to your room."</span>
 	tw-link {
     	font-family: Exo, serif;
     }
-</style>
+</style>\
 
-(set: $time = $time + 5)
-(set:$minutes = $time % 60)
-(if: $minutes is 0)[(set: $minutes to '00')]
-(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
-(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]
+(set: $time = $time + 5)\
+(set:$minutes = $time % 60)\
+(if: $minutes is 0)[(set: $minutes to '00')]\
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]\
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]\
 
 Location: $location 
-Time: $time
+Time: $time\
 <hr>
 
 <span class="main-char">What do you do at Checkpoint 16 as a bellhop?</span>
@@ -153,19 +151,19 @@ Time: $time
 (link: "Vacation, for myself. A reward.")[
 	(replace: ?links)[<span class="bellhop">I feel ya. I definitely need that break soon. The management here really breathes down your neck. Literally. My motions and biometrics are constantly tracked through the staff uniform.
     
-    [[We're here]]</span>]
+    [[We're here]]</span>]\
 ]
 
 (link: "Someone special. I haven’t seen them much recently...")[
 	(replace: ?links)[<span class="bellhop">Oh. Sorry, I guess.
     
-    [[We're here]]</span>]
+    [[We're here]]</span>]\
 ]
 
 (link: "Just felt like it. Don’t worry about it.")[
 	(replace: ?links)[<span class="bellhop">... I see. Yeah, OK. I get it. Sorry for inquiring.
     
-    [[We're here]]</span>]
+    [[We're here]]</span>]\
 ]\
 ]]
 
@@ -193,8 +191,8 @@ Let me know if you need anything else."</span>
 
 
 :: Bellhop Choice 1 {"position":"825,725","size":"100,100"}
-(set: $location to "Hallways")
-Location: $location
+(set: $location to "Hallways")\
+Location: $location\
 <hr>
 
 *The two of you head down a long hallway, Lia following close behind.*
@@ -223,14 +221,14 @@ So… what's the occasion?</span>
 
 
 :: Cut Things Short {"position":"1175,575","size":"100,100"}
-(set: $time = $time + 5)
-(set:$minutes = $time % 60)
-(if: $minutes is 0)[(set: $minutes to '00')]
-(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
-(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]
+(set: $time = $time + 5)\
+(set:$minutes = $time % 60)\
+(if: $minutes is 0)[(set: $minutes to '00')]\
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]\
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]\
 
 Location: $location
-Time: $hours:$minutes$meridiem
+Time: $hours:$minutes$meridiem\
 <hr>
 *You decide it's not worth your time or effort at the moment to interact with Bellhop.*
 *And besides, you'd rather prefer to keep your business to yourself*
@@ -265,15 +263,15 @@ Next time you see them, you can ask them what their secret skill is.*]
 
 
 :: Gossip {"position":"1325,850","size":"100,100"}
-(set: $time = $time + 10)
-(set:$minutes = $time % 60)
-(if: $minutes is 0)[(set: $minutes to '00')]
-(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
-(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]
-(set: $bellhop = $bellhop + 1)
+(set: $time = $time + 10)\
+(set:$minutes = $time % 60)\
+(if: $minutes is 0)[(set: $minutes to '00')]\
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]\
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]\
+(set: $bellhop = $bellhop + 1)\
 
 Location: $Location
-Time: $hours:$minutes$meridiem
+Time: $hours:$minutes$meridiem\
 <hr>
 *Being a Bellhop must allow them to gather information from so many different resources which could be valuable.*
 
@@ -295,11 +293,11 @@ Time: $hours:$minutes$meridiem
 
 Probably better for me and you if we avoid the topic anyways."</span> 
 
-(set: $bellhop = $bellhop + 1)
+(set: $bellhop = $bellhop + 1)\
 
 *You nod in false agreement and the conversation ends there.*
 
-(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]
+(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]\
 ]
 
 (click:?Inquire)[(replace: ?Retreet)[] (replace:?Ask)[]
@@ -311,7 +309,7 @@ Besides, if I report you then that’s less work for me."</span>
 
 *This didn't exactly go as planned and the rest of the walk is uncomfortably silent.*
 
-(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]
+(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]\
 ]
 
 (click:?Ask)[(replace: ?Inquire)[] (replace:?Retreet)[]
@@ -319,14 +317,12 @@ Besides, if I report you then that’s less work for me."</span>
 <span class="bellhop">"Depends on what.
 But I’m not into messing with people and snooping around. 
 Besides, if I report you then that’s less work for me."</span>
-(set: $bellhopHelp = true)
+(set: $bellhopHelp = true)\
 
 *Perhaps the bellhop might still be of help...*
 
-(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]
+(align:"=><=")+(box:"===XXXX===")[[>>>->We're here]]\
 ]
-
-
 
 
 :: Intro 2 {"position":"950,1000","size":"100,100"}
@@ -365,8 +361,6 @@ I’ll have to do what I do best: uncover the truth using everything at my dispo
 (align:"=><=")[[[Enter Lobby->Welcome]]]
 
 
-
-
 :: Introduction {"position":"825,1000","size":"100,100"}
 "Technology allowed us to reach beyond the stars. You can too”. A phrase repeated on every street, every colony and every planet. With interstellar travel a reality, humanity has explored, conquered and, quote-unquote, developed hundreds of cosmic civilizations.
 
@@ -376,15 +370,15 @@ Nevertheless, here are some jobs that robots and AI can’t replace, can’t rep
 
 
 :: Start Bellhop Convo {"position":"1175,750","size":"100,100"}
-(set: $bellhop = 1)
-(set: $time = $time + 5)
-(set:$minutes = $time % 60)
-(if: $minutes is 0)[(set: $minutes to '00')]
-(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
-(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]
+(set: $bellhop = 1)\
+(set: $time = $time + 5)\
+(set:$minutes = $time % 60)\
+(if: $minutes is 0)[(set: $minutes to '00')]\
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]\
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]\
 
 Location: $location
-Time: $hours:$minutes$meridiem
+Time: $hours:$minutes$meridiem\
 <hr>
 *You decide it can't hurt to answer their question, although you won't say too much.*
 *And besides, you could get some useful information from them.*
@@ -406,43 +400,41 @@ Time: $hours:$minutes$meridiem
 
 
 :: Time Tutorial {"position":"1050,725","size":"100,100"}
-(set:$time to 540)
-(set: $hours = $time / 60)
-(set:$minutes = $time % 60)
-(set:$meridiem = "AM")
-(set:$nums = (range:1,9))
-(if:$minutes is 0)[(set: $minutes to '00')]
-(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]
+(set:$time to 540)\
+(set: $hours = $time / 60)\
+(set:$minutes = $time % 60)\
+(set:$meridiem = "AM")\
+(set:$nums = (range:1,9))\
+(if:$minutes is 0)[(set: $minutes to '00')]\
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]\
 
-Lia At Your Service
+Lia At Your Service\
 <hr>
 (align:"=><=")+(box:"===XXXX===")[<img src="https://png.pngtree.com/png-vector/20220807/ourmid/pngtree-cute-robot-mascot-logo-png-image_6102423.png">]
 
-<span="lia"> 
+<span="lia"> \
 "Dear guest, before you go through with your decision, remember you are on a time crunch."
 
 "For every question you ask that elongates the conversation, the more time you are using up that can be used for investigating others."
 
 "Here is the current time here at Checkpoint 16: (text-colour:cyan)[$hours:$minutes$meridiem]"
 "Your ticket home is in (text-colour:cyan)[24 hours]."
-"Use your time wisely."
+"Use your time wisely."\
 </span> 
 
 (align:"=><=")[[[Start a conversation->Start Bellhop Convo]]]
 (align:"=><=")[[[Cut things short->Cut Things Short]]]
 
 
-
-
 :: We're here {"position":"1550,750","size":"100,100"}
-(set: $time = $time + 5)
-(set:$minutes = $time % 60)
-(if: $minutes is 0)[(set: $minutes to '00')]
-(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
-(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]
+(set: $time = $time + 5)\
+(set:$minutes = $time % 60)\
+(if: $minutes is 0)[(set: $minutes to '00')]\
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]\
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]\
 
 Location: $location
-Time: $hours:$minutes$meridiem
+Time: $hours:$minutes$meridiem\
 <hr>
 
 <span class="bellhop">"Well, this is it. Your room."</span>
@@ -457,8 +449,8 @@ In the corner is a closet with some sort of fancy, abstract painting. On the opp
 
 
 :: Welcome {"position":"1400,1000","size":"100,100"}
-(set:$location to "Lobby")
-Location: $location
+(set:$location to "Lobby")\
+Location: $location\
 <hr>
 (align:"=><=")[<img src="https://png.pngtree.com/png-vector/20220807/ourmid/pngtree-cute-robot-mascot-logo-png-image_6102423.png">]
 *A smooth talking sphere approaches you*
@@ -472,10 +464,9 @@ Please confirm your reservation using LIA now.
 (b4r:"solid")+(b4r-size:1)+(b4r-colour:white)[[<span style="color: white;">Enter Name|lia]]
 
 
-
 :: lia {"position":"1125,875","size":"100,100"}
-(set:$playerName to (prompt:"Enter your name: ", "Name"))
-Location: $location
+(set:$playerName to (prompt:"Enter your name: ", "Name"))\
+Location: $location\
 <hr>
 Initializing LIA… 
 
