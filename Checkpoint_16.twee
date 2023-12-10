@@ -236,18 +236,21 @@ Time: $hours:$minutes$meridiem\
 //You still have a few more minutes before lunch starts. Better make the most of your time..//
 ]\
 
-(if:$gossipConvo is true)[(if:$skillConvo is true)[(if:$note1 is false)[(if:$note2 is false)[//It seems you have run out of questions. Although you have a lot of time left, you don't have enough leads to question other characters. You should try to maximize your time next time by engaging in more conversations.\
+(if:$gossipConvo is true)[(if:$skillConvo is true)[(if:$note1 is false)[(if:$note2 is false)[\
+//Although you have time left, you are unsure what to do next as your stomach growls.
+You hear LIA chime in. Her tone indicates that she’s irritated.//
 
-You spend the rest of your remaining time before lunch getting to know the rest of the hotel before heading off to the buffet.//\
+<span class='lia'>“Try and maximize your time! You should engage in more conversation next time around. You’re a detective, for goodness sake!”</span>
 
 (align:"=><=")[---]
 (align:"=><=")[[Lunch Time]]\
 ]]]]\
 
 (if:$gossipConvo is true)[(if:$skillConvo is true)[(if:$note1 is true)[(if:$bellhopNote1 is true)[(if:$note2 is false)[\
-//It seems you have run out of questions. Although you have a lot of time left, you don't have enough leads to question other characters. You should try to maximize your time next time by engaging in more conversations.\
+//Although you have time left, you are unsure what to do next as your stomach growls.
+You hear LIA chime in. Her tone indicates that she’s irritated.//
 
-You spend the rest of your remaining time before lunch getting to know the rest of the hotel before heading off to the buffet.//\
+<span class='lia'>“Try and maximize your time! You should engage in more conversation next time around. You’re a detective, for goodness sake!”</span>
 
 (align:"=><=")[---]
 (align:"=><=")[[Lunch Time]]\
@@ -255,9 +258,10 @@ You spend the rest of your remaining time before lunch getting to know the rest 
 //You still have a few more minutes before lunch starts. Better make the most of your time..//]\
 
 (if:$gossipConvo is true)[(if:$skillConvo is true)[(if:$note2 is true)[(if:$bellhopNote2 is true)[(if:$note1 is false)[
-//It seems you have run out of questions. Although you have a lot of time left, you don't have enough leads to question other characters. You should try to maximize your time next time by engaging in more conversations.\
+//Although you have time left, you are unsure what to do next as your stomach growls.
+You hear LIA chime in. Her tone indicates that she’s irritated.//
 
-You spend the rest of your remaining time before lunch getting to know the rest of the hotel before heading off to the buffet.//\
+<span class='lia'>“Try and maximize your time! You should engage in more conversation next time around. You’re a detective, for goodness sake!”</span>
 
 (align:"=><=")[---]
 (align:"=><=")[[Lunch Time]]\
@@ -265,9 +269,10 @@ You spend the rest of your remaining time before lunch getting to know the rest 
 //You still have a few more minutes before lunch starts. Better make the most of your time..//]\
 
 (if:$gossipConvo is true)[(if:$skillConvo is true)[(if:$note1 is true)[(if:$bellhopNote1 is true)[(if:$note2 is true)[(if:$bellhopNote2 is true)[
-//It seems you have run out of questions. Although you have a lot of time left, you don't have enough leads to question other characters. You should try to maximize your time next time by engaging in more conversations.\
+//Although you have time left, you are unsure what to do next as your stomach growls.
+You hear LIA chime in. Her tone indicates that she’s irritated.//
 
-You spend the rest of your remaining time before lunch getting to know the rest of the hotel before heading off to the buffet.//\
+<span class='lia'>“Try and maximize your time! You should engage in more conversation next time around. You’re a detective, for goodness sake!”</span>
 
 (align:"=><=")[---]
 (align:"=><=")[[Lunch Time]]\]]]]]]\
@@ -1629,7 +1634,6 @@ It would be useful inside of machines. Specifically in high-level robot creation
 (if:$trust >= 3)[\
 		<span class='office-worker'>"Best wishes, detective."</span>\
 ]]
-
 
 
 :: Try talking to them through the glass {"position":"3100,700","size":"100,100"}
