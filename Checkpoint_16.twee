@@ -213,7 +213,7 @@ Anyways, the job pays well and I have time for other work so I’m not complaini
 ]
 
 
-:: Ask More Questions {"position":"2700,1200","size":"100,100"}
+:: Ask More Questions {"position":"2700,1000","size":"100,100"}
 {(set: $location = 'Lobby')
 (set: $time = $time + 20)
 (set: $hours = (floor:($time / 60)))
@@ -479,7 +479,7 @@ Besides, you bought the cheapest room here, which isn’t a family or honeymoon 
 (align:"=><=")[[[Cut things short->Time Tutorial]]]
 
 
-:: Continue Conversation 2 {"position":"2550,1200","size":"100,100"}
+:: Continue Conversation 2 {"position":"2550,1000","size":"100,100"}
 (set: $location = 'Lobby')\
 (set: $time = $time + 20)\
 (set: $hours = (floor:($time / 60)))\
@@ -679,7 +679,54 @@ Time: $hours:$minutes$meridiem\
 (align:"=><=")+(box:"===XXXX===")[[>>>|We're here]]
 
 
-:: End {"position":"2850,1225","size":"100,100"}
+:: Dinner {"position":"3300,600","size":"100,100"}
+{(set: $location = 'Buffet')
+(set: $time = $time + 20)
+(set: $hours = (floor:($time / 60)))
+(set:$minutes = $time % 60)
+(if: $minutes is 0)[(set: $minutes to '00')]
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]}\
+Location: $location
+Time: $hours:$minutes$meridiem\
+<hr>
+//You’ve spent many hours investigating and are needing another moment to circle back on what you’ve learned. You decide to grab some dinner at the Buffet again to gain some energy.
+
+When you arrive at the Buffet, it is 8:05PM. You decide to try a vintage meal: steak and potatoes. At Checkpoint 16, they ramp up the dish into wagyu sirloin and truffle mashed potatoes. As you gorge yourself on the most decadent dinner you’ve ever had, you observe the Buffet once more. 
+
+You see://
+
+<!--if spoken to singer-->
+(if:$spoken_singer is true)[//The woman you encountered in the Buffet earlier today arrives at 8:35, grabs a bottle of sparkling water and leaves. She briefly smiles at you on her way out.//]
+
+(else:)[//The individual with pink hair you saw during lunch arrives at 8:35, grabs a bottle of sparkling water, and leaves.//]
+
+<!--if spoken to criminal-->
+(if:$spoken_ciminal is true)[//The suspicious person from the Lounge & Bar sits down at 8:15. They call over a bot to change the ambient scene to a dreamy sunset on the shore of a sandy, platinum beach. They enjoy a dish of Chateaubriand paired with a vintage red wine, offering you a glass which you politely decline.//]
+
+(else:)[//The individual in a suit you saw during lunch sits down at 8:15. They call over a bot to change the ambient scene to a dreamy sunset on the shore of a sandy, platinum beach. They order a dish of Chateaubriand paired with a vintage red wine.//]
+
+<!--if spoken to office worker-->
+(if:$spoken_office_worker is true)[//The worker you met at the Meetings Floor arrives in a hurry at 8:40. They inhale a ham and cheese croissant then grab two sparkling waters. They glance your way, still chewing the croissant, and give you a quick bow on their way out at 8:50.//]
+
+(else:)[//The worker you met at the Meetings Floor arrives in a hurry at 8:40. They inhale a ham and cheese croissant then grab two sparkling waters. They sprint out of the buffet, still chewing the croissant, at 8:50.//]
+
+<!--spoken to bellhop (true always)-->
+//The Bellhop comes in at 8:10. They order what seems to be an employee meal of pesto alfredo and coffee, eating with one hand and scrolling through a personal device on the other. They leave around 8:45 after snatching a canned energy drink on their way out.//
+
+//You finish your deluxe dinner at 9:00, fully satiated and rehydrated. LIA speaks up as you consider where to go next.
+
+<span class='lia'>“Detective, you need to go to the Lounge & Bar. Now. An event is occurring at that location and insightful information can be gleaned from the attendees. I promise”</span>
+
+You find LIA’s tone odd and unlike that of the other bots you’ve encountered. You ask LIA why she is so insistent but she does not respond. It seems that LIA’s voice function has been shut off temporarily. 
+
+As you ponder LIA’s demand and this odd scenario, you decide that there is considerable merit in listening to LIA. You leave the Buffet with newfound determination.//
+
+(align:"=><=")[---]
+(align:"=><=")[[Go to Lounge & Bar|Lounge & Bar 3rd Part]]
+
+
+:: End {"position":"3100,1200","size":"100,100"}
 (align:"=><=")[*Congrats you've made it to the end of the Demo!
 
 Let's see how well you did in your first interactions with the bellhop!
@@ -699,7 +746,7 @@ Next time you see them, you can ask them what their secret skill is.*]
 ]
 
 
-:: Enter Room {"position":"1550,875","size":"100,100"}
+:: Enter Room {"position":"1700,575","size":"100,100"}
 {(set: $time = $time + 10)
 (set: $hours = (floor:($time / 60)))
 (set:$minutes = $time % 60)
@@ -725,6 +772,34 @@ The room looks simple as it is, but perhaps it’s worth investigating. But with
 (set:$note2 = false)}
 
 
+:: Finish Eating {"position":"2900,1175","size":"100,100"}
+{(set: $location = 'Buffet')
+(set: $time = $time + 20)
+(set: $hours = (floor:($time / 60)))
+(set:$minutes = $time % 60)
+(if: $minutes is 0)[(set: $minutes to '00')]
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]}\
+Location: $location
+Time: $hours:$minutes$meridiem\
+<hr>
+//Your hunger satisfied and taste buds delighted, you feel ready to return to your investigation.
+
+As you wonder where to go next, LIA’s voice is heard.//
+
+(align:"=><=")[<img src="https://static.wixstatic.com/media/b55364_9e6a16d5396c4daf86dc6ff725af4ab7~mv2.png">]
+
+<span class="lia">"Detective, where are we off to next? I would strongly suggest you investigate a different area in order to get more information."</span>
+
+//You decide to go to a different area next.//
+
+(align:"=><=")[---]
+(align:"=><=")[[Go to Lobby]]
+(align:"=><=")[[Go to Lounge & Bar]]
+(align:"=><=")[[Go to Meetings Floor]]
+(align:"=><=")[[Go to Buffet]]
+
+
 :: Go to Buffet {"position":"3200,1000","size":"100,100"}
 {(set: $location = 'Buffet')
 (set: $time = $time + 20)
@@ -747,7 +822,7 @@ Time: $hours:$minutes$meridiem\
 (set:$singer_trust to 0)
 
 
-:: Go to Lobby {"position":"2300,1200","size":"100,100"}
+:: Go to Lobby {"position":"2300,1000","size":"100,100"}
 (set: $location = 'Lobby')\
 (set: $time = $time + 20)\
 (set: $hours = (floor:($time / 60)))\
@@ -906,7 +981,7 @@ Nevertheless, here are some jobs that robots and AI can’t replace, can’t rep
 (align:"=><=")[[[>>>->Intro 2]]]
 
 
-:: Investigate Bed {"position":"1825,900","size":"100,100"}
+:: Investigate Bed {"position":"1900,800","size":"100,100"}
 {(set: $time = $time + 5)
 (set: $hours = (floor:($time / 60)))
 (set:$minutes = $time % 60)
@@ -935,7 +1010,7 @@ Time: $hours:$minutes$meridiem\
 (align:"=><=")[[Leave Room]]}
 
 
-:: Investigate Bedside table {"position":"1825,1300","size":"100,100"}
+:: Investigate Bedside table {"position":"1900,1200","size":"100,100"}
 (set: $time = $time + 5)\
 (set: $hours = (floor:($time / 60)))\
 (set:$minutes = $time % 60)\
@@ -959,7 +1034,7 @@ Time: $hours:$minutes$meridiem\
 (align:"=><=")[[Leave Room]]}
 
 
-:: Investigate Closet {"position":"1825,1000","size":"100,100"}
+:: Investigate Closet {"position":"1900,900","size":"100,100"}
 {(set: $time = $time + 5)
 (set: $hours = (floor:($time / 60)))
 (set:$minutes = $time % 60)
@@ -992,7 +1067,7 @@ Time: $hours:$minutes$meridiem\
 (align:"=><=")[[Leave Room]]}
 
 
-:: Investigate Mirror {"position":"1825,1200","size":"100,100"}
+:: Investigate Mirror {"position":"1900,1100","size":"100,100"}
 {(set: $time = $time + 5)
 (set: $hours = (floor:($time / 60)))
 (set:$minutes = $time % 60)
@@ -1014,7 +1089,7 @@ Time: $hours:$minutes$meridiem\
 (align:"=><=")[[Leave Room]]}
 
 
-:: Investigate Room {"position":"1675,1000","size":"100,100"}
+:: Investigate Room {"position":"1700,1000","size":"100,100"}
 {(set: $hours = (floor:($time / 60)))
 (set:$minutes = $time % 60)
 (if: $minutes is 0)[(set: $minutes to '00')]
@@ -1049,7 +1124,7 @@ You could potentially investigate everything... where should you start?//
 (set:$washroom = false)}
 
 
-:: Investigate Washroom {"position":"1825,1100","size":"100,100"}
+:: Investigate Washroom {"position":"1900,1000","size":"100,100"}
 (set: $time = $time + 5)\
 (set: $hours = (floor:($time / 60)))\
 (set:$minutes = $time % 60)\
@@ -1123,7 +1198,7 @@ And, if you require anything from the bellhop, you can find them in the (text-co
 (align:"=><=")[[Go to Lounge & Bar]]
 
 
-:: Leave the Meeting Floor {"position":"2900,1000","size":"100,100"}
+:: Leave the Meeting Floor {"position":"2900,975","size":"100,100"}
 {(set: $hours = (floor:($time / 60)))
 (set:$minutes = $time % 60)
 (if: $minutes is 0)[(set: $minutes to '00')]
@@ -1158,8 +1233,33 @@ Time: $hours:$minutes$meridiem\
 (align:"=><=")[[>>>|Other Rooms]]
 
 
-:: Lunch Time {"position":"2600,1400","size":"100,100"}
+:: Lounge & Bar 3rd Part {"position":"3300,725","size":"100,100"}
 
+
+
+:: Lunch Time {"position":"2600,1200","size":"100,100"}
+{(set: $location = 'Buffet')
+(set: $time = $time + 20)
+(set: $hours = (floor:($time / 60)))
+(set:$minutes = $time % 60)
+(if: $minutes is 0)[(set: $minutes to '00')]
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]}\
+Location: $location
+Time: $hours:$minutes$meridiem\
+<hr>
+//You decide that it’d be best to replenish your energy. You head off to the buffet to enjoy a luxurious lunch of lobster rolls and champagne. While there, you note that there are 3 other people at the Buffet:
+
+An individual with long pink hair dressed in a white bathrobe happily enjoying pancakes.
+
+An individual in a white dress shirt and slacks, typing on a personal device and eating some kind of mixed salad at the same time.
+
+An individual in a suit cutting into a Cordon Bleu and nonchalantly sipping on a glass of white wine.
+
+The person in the dress shirt and the person in the suit finish eating. They exit the buffet one after the other, exchanging words on their way out.//
+
+(align:"=><=")[---]
+(align:"=><=")[[Finish Eating]]
 
 
 :: Navigate Mettings Floor {"position":"2425,800","size":"100,100"}
@@ -1439,7 +1539,7 @@ Time: $hours:$minutes$meridiem\
 (align:"=><=")+(box:"===XXXX===")[[Gossip|Gossip]]
 
 
-:: Talk to the Bellhop {"position":"2425,1200","size":"100,100"}
+:: Talk to the Bellhop {"position":"2425,1000","size":"100,100"}
 {(set: $location = 'Lobby')
 (set: $time = $time + 10)
 (set: $hours = (floor:($time / 60)))
@@ -1503,7 +1603,7 @@ Lia At Your Service\
 (set:$bellhopSkill = false)}
 
 
-:: Try opening the door and walk inside {"position":"3100,800","size":"100,100"}
+:: Try opening the door and walk inside {"position":"3100,700","size":"100,100"}
 {(set: $hours = (floor:($time / 60)))
 (set:$minutes = $time % 60)
 (if: $minutes is 0)[(set: $minutes to '00')]
@@ -1636,7 +1736,7 @@ It would be useful inside of machines. Specifically in high-level robot creation
 ]]
 
 
-:: Try talking to them through the glass {"position":"3100,700","size":"100,100"}
+:: Try talking to them through the glass {"position":"3100,600","size":"100,100"}
 {(set: $hours = (floor:($time / 60)))
 (set:$minutes = $time % 60)
 (if: $minutes is 0)[(set: $minutes to '00')]
@@ -1656,7 +1756,7 @@ It would be useful inside of machines. Specifically in high-level robot creation
 ]
 
 
-:: We're here {"position":"1550,750","size":"100,100"}
+:: We're here {"position":"1700,450","size":"100,100"}
 {(set: $time = $time + 10)
 (set: $hours = (floor:($time / 60)))
 (set:$minutes = $time % 60)
@@ -1769,7 +1869,7 @@ Initializing LIA…
 (align:"=><=")[[[Talk to figure->Bellhop #1]]]
 
 
-:: placeHolder {"position":"3300,500","size":"100,100"}
+:: placeHolder {"position":"2825,600","size":"100,100"}
 
 
 
