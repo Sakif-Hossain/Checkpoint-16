@@ -99,6 +99,38 @@ Work demands I get others to respond in a timely manner. I’m not choosy with w
 (align:"=><=")[[>>>->cime-mem continue]]
 
 
+:: Approach Singer {"position":"3325,1000","size":"100,100"}
+{(set: $location = 'Buffet')
+(set: $time = $time + 20)
+(set: $hours = (floor:($time / 60)))
+(set:$minutes = $time % 60)
+(if: $minutes is 0)[(set: $minutes to '00')]
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]}\
+Location: $location
+Time: $hours:$minutes$meridiem\
+<hr>
+//You walk towards the individual. As you get closer, they notice your approach and spin towards you. They smile.//
+
+<span class='singer'>"Hi there. Who’re you?"</span>
+
+[<span class='main-char'>"Tell the truth."</span>]<Option1|
+
+(click:?Option1)[(replace:?Option2)[]\
+<span class='singer'>"I’m a detective."</span>\
+(set:$singer_trust = $singer_trust + 1)\
+]
+
+[<span class='main-char'>"Lie."</span>]<Option2|
+
+(click:?Option2)[(replace:?Option1)[]\
+<span class='singer'>"I'm a chef"</span>\
+]
+
+(align:"=><=")[---]
+(align:"=><=")[[>>>|Singer Continue]]
+
+
 :: Approach the stressed individua {"position":"2550,800","size":"100,100"}
 {(set: $location = 'Meetings Floor')
 (set: $time = $time + 20)
@@ -689,7 +721,25 @@ The room looks simple as it is, but perhaps it’s worth investigating. But with
 
 
 :: Go to Buffet {"position":"3200,1000","size":"100,100"}
+{(set: $location = 'Buffet')
+(set: $time = $time + 20)
+(set: $hours = (floor:($time / 60)))
+(set:$minutes = $time % 60)
+(if: $minutes is 0)[(set: $minutes to '00')]
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]}\
+Location: $location
+Time: $hours:$minutes$meridiem\
+<hr>
+//You arrive at the Buffet. The walls and ceiling are screens and they display a sunny rooftop terrace on Earth. The sky is blue, the clouds are sparse and fluffy, and the sunlight beaming down on the tables and seats feels warm to the touch.//
 
+//The buffet is, in truth, a dozen food printers made to look like server bots. They roam the buffet, their fake serving bells emitting fake steam.//
+
+//A short individual is standing in front of one of the server bots. They seem to be deep in thought, twirling their long, neon blue hair with one hand. They are wearing a white bathrobe that is likely provided by the hotel. On their neck is a dazzling diamond necklace that you can only imagine is worth a few millions.//
+
+(align:"=><=")[---]
+(align:"=><=")[[Approach the thinking individual|Approach Singer]]
+(set:$singer_trust to 0)
 
 
 :: Go to Lobby {"position":"2300,1200","size":"100,100"}
@@ -861,9 +911,8 @@ Nevertheless, here are some jobs that robots and AI can’t replace, can’t rep
 Location: $location
 Time: $hours:$minutes$meridiem\
 <hr>\
-(set:$note1 = true)
-//\
-You examine the covers and bed frame and see a (text-colour:cyan)[paper note] tucked between the mattress and bedframe: //
+(set:$note1 = true)\
+//You examine the covers and bed frame and see a (text-colour:cyan)[paper note] tucked between the mattress and bedframe: //
 "Meet behind stage in the Lounge & Bar after performance."
 
 <span class="main-char">"Jazz bar... perhaps their frequent guests or performers might know who wrote this."</span>
@@ -1150,6 +1199,211 @@ Therefore, you decide to ...//
 (set:$office_worker_trust to 0)
 
 
+:: Singer Continue {"position":"3450,1000","size":"100,100"}
+{(set: $location = 'Buffet')
+(set: $time = $time + 20)
+(set: $hours = (floor:($time / 60)))
+(set:$minutes = $time % 60)
+(if: $minutes is 0)[(set: $minutes to '00')]
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]}\
+Location: $location
+Time: $hours:$minutes$meridiem\
+<hr>
+<span class='singer'>"What are you doing?"</span>
+
+[Tell the truth.]<Option1|
+
+(click:?Option1)[(replace:?Option2)[]\
+<span class='main-char'>"I’m investigating a missing person’s case. It’s important to me."</span>
+
+<span class='singer'>"Interesting…"</span>
+(set:$singer_trust = $singer_trust + 1)\
+]
+
+[Lie.]<Option2|
+
+(click:?Option2)[(replace:?Option1)[]\
+<span class='main-char'>"I’m researching the local cuisine."</span>
+
+<span class='singer'>"Interesting…"</span>
+]
+
+(align:"=><=")[---]
+(align:"=><=")[[>>>|Singer Continue 2]]
+
+
+:: Singer Continue 2 {"position":"3575,1000","size":"100,100"}
+{(set: $location = 'Buffet')
+(set: $time = $time + 20)
+(set: $hours = (floor:($time / 60)))
+(set:$minutes = $time % 60)
+(if: $minutes is 0)[(set: $minutes to '00')]
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]}\
+Location: $location
+Time: $hours:$minutes$meridiem\
+<hr>
+//They look you up and down slowly. Their brows furrow as they run their eyes across you in an exaggerated way.//
+
+<span class='singer'>"I’m the Singer. She/her pronouns. You seem to be busy with something that isn’t the food."</span>
+
+[<span class='main-char'>"What are you doing here?"</span>]<Question1|
+
+(click:?Question1)[\
+<span class='singer'>"I’m having breakfast. My first meal of the day is by far the most important part of my morning routine."
+"What’s your favorite breakfast food?"</span>
+
+[<span class='main-char'>"Salad. Yogurt. Hard boiled eggs."</span>]<Response1|
+
+(click:?Response1)[(replace:?Response2)[]\
+<span class='singer'>"So efficient. What do you do for fun?"</span>
+
+//Before you answer, she giggles.//
+
+<span class='singer'>"Nevermind, I’m sure it’d be just as boring, haha! No offense though."</span>\
+]
+
+[<span class='main-char'>"Depends on the day."</span>]<Response2|
+
+(click:?Response2)[(replace:?Response1)[]\
+<span class='singer'>"Me too! Today feels like pancake day, but I’m still deciding on my drink."</span>\
+(set:$singer_trust = $singer_trust + 1)\
+]]
+
+[<span class='main-char'>"How did you end up working here?"</span>]<Question2|
+
+(click:?Question2)[\
+<span class='singer'>"Ah… That would be a long and complicated story."
+"It involves my talents in performance, my dear friends and the support of my adoring fans."
+"I’m sure that without all of these things and my own effort, I wouldn’t have been able to reach where I am today."</span>
+
+[<span class='main-char'>"Wow. So inspiring."</span>]<Option1|
+
+(click:?Option1)[(replace:?Option2)[](replace:?Option3)[]\
+<span class='singer'>"Right? I’m super humble."</span>\
+]
+
+[<span class='main-char'>"That sounds kind of fake. What really happened?"</span>]<Option2|
+
+(click:?Option2)[(replace:?Option1)[](replace:?Option3)[]\
+//She giggles then begins to cackle. After a minute of unceasing laughter, she catches her breath and responds.//
+
+<span class='singer'>"I haven’t heard that in so long. You are very funny, detective. Truly a great investigator, you are. Ha!"
+"I pulled some strings, obviously. But that doesn’t come across as humble and admirable as the “I’m so grateful for my fans” spiel. Even after becoming one of the best, gaining all this popularity and wealth, I still have to maintain this perfect image."</span>
+
+//She pauses, looking down for only a moment.//
+
+<span class='singer'>"I have to."</span>\
+(set:$singer_trust = $singer_trust + 1)\
+]
+
+[<span class='main-char'>"Could you go into more detail about it?"</span>]<Option3|
+
+(click:?Option2)[(replace:?Option1)[](replace:?Option2)[]\
+<span class='singer'>"Sorry detective, I cannot. I would reveal more to my “rise to stardom” story and that would put me in a tough spot. Forgive me, please?"</span>\
+]]
+
+(align:"=><=")[---]
+(align:"=><=")[[>>>|Singer Continue 3]]
+
+
+:: Singer Continue 3 {"position":"3700,1000","size":"100,100"}
+(set:$card to true)
+
+{(set: $location = 'Buffet')
+(set: $time = $time + 20)
+(set: $hours = (floor:($time / 60)))
+(set:$minutes = $time % 60)
+(if: $minutes is 0)[(set: $minutes to '00')]
+(if: $nums contains $minutes)[(set: $minutes to '0'+(text:$minutes))]
+(if:$hours is >=12 and $hours is <24)[(set: $meridiem = 'PM')]}\
+Location: $location
+Time: $hours:$minutes$meridiem\
+<hr>
+[<span class='main-char'>"Have you heard of a person named Mira before?"</span>]<Question4|
+
+(click:?Question4)[\
+//She closes her eyes and furrows her brows.//
+
+<span class='singer'>"Nope. No one that I can think of named Mira. I memorize the faces and names of almost everyone I talk to, but Mira doesn’t ring a bell."</span>\
+]
+
+[<span class='main-char'>"Have you heard of the Cypher Diamond?"</span>]<Question5|
+
+(click:?Question5)[\
+<span class='singer'>"Of course I have! Who in this day and age hasn’t? I can’t believe someone took that beauty from under the Barge’s watchful eye."
+"What a dreamy gem…! If I were the thief, I would keep the Cypher in a glass case right next to my bed. Afterwards, I would look at it every day."</span>\
+]
+
+(if:$note1 is true)[\
+		[Show the note you found in the closet.]<Question6|
+        
+        (click:?Question6)[\
+		<span class='singer'>"Woah! Behind the stage? Usually the only people back there are me, my fans, and my helpers. I didn’t write this so I’m not sure who it was for, though. I don’t recognize the handwriting either."
+		"Sorry about that, investigator."</span>\
+		]
+]
+
+(if:$note2 is true)[\
+		[Show the letter you found in the closet.]<Question7|
+        
+        (click:?Question7)[\
+		<span class='singer'>"Hmm… I think I recognize this handwriting!"</span>
+        
+        //She pulls out a retro phone. The kind with buttons for letters and numbers. Attached to the relic are probably a dozen jeweled charms.//
+        
+        <span class='singer'>"Found it!"</span>
+        
+        //She points the device towards you.//
+        
+        <span class='singer'>"The writing resembles this one here! See this fan letter? The writing is nearly identical."</span>
+        
+        //You examine the note and the photograph on her device. She’s right.//
+        
+        <span class='singer'>"This letter was an anonymous one, so I’m not sure who sent it."
+		"Hopefully this helped you, investigator."</span>
+		]
+]
+
+(if:$card is true)[\
+		[<span class='main-char'>"Someone gave me this card. I think it mentions you."</span>]<Question8|
+        
+        (click:?Question8)[\
+        //You take the card you received from the person at the Lounge and Bar out of your pocket. You flip it, and the backside has an illustration of a pink haired singer.//
+        
+        <span class='singer'>"I see that you’ve met my patron."</span>
+        
+        //Her tone is dry and slightly irritated.//
+        
+        [<span class='main-char'>"What’s your relationship like with them?"</span>]<Response1|
+        
+		(click:?Response1)[(replace:?Response3)[]\
+		<span class='singer'>"They support my work, supplying me with opportunities to perform and the wares I need to play my part. Makeup, hair stylists, outfits of course. I need to look the part, they said, of a beautiful, talented artist."</span>
+        
+        [<span class='main-char'>"What do you mean they support you?"</span>]<Response2|
+        
+        (click:?Response2)[<span class='singer'>"They provide and they pay. I don’t know how exactly they acquired them, but all my gems and jewelry were once theirs."
+		"They have connections, you know. They certainly know how to influence people and leverage relationships, if you know what I mean."</span>
+        ]]
+
+		[<span class='main-char'>" What do you think of them?"</span>]<Response3|
+
+		(click:?Response3)[(replace:?Response1)[]\
+		<span class='singer'>"They’re alright. Polite, organized, and rather considerate. Still, they’re cold and a little sinister, I guess. Something fishy going on around them, I can sense it."</span>\
+		]
+        ]
+]
+
+[<span class='main-char'>"I don’t have anything to ask."</span>]<Question9|
+
+(click:?Question8)[\
+//The Singer turns back to the server bot, ordering pancakes and a soda. She gestures goodbye.//
+
+<span class='singer'>"See you later, investigator!"</span>
+]
+
+
 :: Start Bellhop Convo {"position":"1175,750","size":"100,100"}
 {(set: $bellhop = 1)
 (set: $time = $time + 10)
@@ -1294,13 +1548,13 @@ It would be useful inside of machines. Specifically in high-level robot creation
 ]]
 
 (if:$note1 is true)[\
-		[<span class='main-char'>"Show the note you found in the bed."</span>]<Question5|
+		[Show the note you found in the bed.]<Question5|
         
         (click:?Question5)[<span class='office-worker'>"I do not recognize this note. However, the Singer did not write this. I would definitely recognize her lovely writing."</span>]\
 ]
 
 (if:$note2 is true)[\
-		[<span class='main-char'>"Show the letter you found in the closet."</span>]<Question6|
+		[Show the letter you found in the closet.]<Question6|
         
         (click:?Question6)[<span class='office-worker'>"I… I-I… I wrote this!"</span>
         
@@ -1544,6 +1798,10 @@ Initializing LIA…
 }
 
 .office-worker{
+  font-family:
+}
+
+.singer{
   font-family:
 }
   
