@@ -1146,15 +1146,8 @@ Therefore, you decide to ...//
 
 [[Try talking to them through the glass]]
 
-
-[[Try opening the door and walk inside]]
-
-(click:?Option2)[(replace:?option1)[]\
-]
-
-
-(align:"=><=")[---]
-(align:"=><=")[[>>>|j]]
+[[Try opening the door and walk inside]]\
+(set:$office_worker_trust to 0)
 
 
 :: Start Bellhop Convo {"position":"1175,750","size":"100,100"}
@@ -1267,17 +1260,121 @@ Lia At Your Service\
 
 (click:?Question1)[(replace:?Question2)[]\
 <span class='office-worker'>"Short. Thank you. I am working. Completing buyer proposals. Handling company logistics. Putting out fires."</span>\
-(set:$office_worker_trust to 1)\
+(set:$office_worker_trust = $office_worker_trust + 1)\
 ]
 
-[<span class='main-char'>"What are you doing right now? You seem super stressed out."</span>]<Question1|
+[<span class='main-char'>"What are you doing right now? You seem super stressed out."</span>]<Question2|
 
-(click:?Question1)[(replace:?Question2)[]\
+(click:?Question2)[(replace:?Question1)[]\
 <span class='office-worker'>"A little long, detective. I am working. Completing buyer proposals. Handling company logistics. Putting out fires"</span>\
 ]
 
+[<span class='main-char'>"Have you heard of someone named Mira before?"</span>]<Question3|
 
+(click:?Question3)[<span class='office-worker'>"… Not that I recall. I do not remember someone named Mira."</span>]
 
+[<span class='main-char'>"Did you hear about the Cypher Diamond?"</span>]<Question4|
+
+(click:?Question4)[<span class='office-worker'>"I did. Holes in logistics compromised security. Such a shame."
+"Diamonds are valuable for many reasons. Wealth, technology, prestige… There are many benefits. One must wonder why the diamond was stolen."</span>
+
+[<span class='main-char'>"Why do you think it was stolen?"</span>]<Response1|
+
+(click:?Response1)[(replace:?Response2)[]\
+<span class='office-worker'>"Short. Thank you. I believe it was stolen for technological purposes. Its sapphire-diamond structure is ideal for semiconductors."
+"It would be useful inside of machines. Specifically in high-level robot creation."</span>\
+(set:$office_worker_trust = $office_worker_trust + 1)\
+]
+
+[<span class='main-char'>"Do you have any ideas as to why it was stolen?"</span>]<Response2|
+
+(click:?Response2)[(replace:?Response1)[]\
+<span class='office-worker'>"Over the limit, detective. I believe it was stolen for technological purposes. Its sapphire-diamond structure is ideal for semiconductors. 
+It would be useful inside of machines. Specifically in high-level robot creation."</span>\
+]]
+
+(if:$note1 is true)[\
+		[<span class='main-char'>"Show the note you found in the bed."</span>]<Question5|
+        
+        (click:?Question5)[<span class='office-worker'>"I do not recognize this note. However, the Singer did not write this. I would definitely recognize her lovely writing."</span>]\
+]
+
+(if:$note2 is true)[\
+		[<span class='main-char'>"Show the letter you found in the closet."</span>]<Question6|
+        
+        (click:?Question6)[<span class='office-worker'>"I… I-I… I wrote this!"</span>
+        
+        //They sink down in their seats. Their hands cover their entire face and their ears turn red.//
+        
+        <span class='office-worker'>"How embarrassing! I originally wrote that to speak to the beautiful, talented, infinitely kind Singer. Some random woman interrupted our 37th interaction at Checkpoint 16."</span>
+        
+        //Another woman? They must be referring to Mira.//
+        
+        <span class='office-worker'>"I placed the letter in the pocket of the woman’s jacket. I was sure she would see it at some point. That was a few days ago…"
+		"So rude! She never came to see me. Whatever. It’s good that she didn’t interrupt my 7th viewing of the Singer’s performance."</span>
+        
+        //The person pauses. They clear their throat.//
+        
+        <span class='office-worker'>"Apologies. Back to the questions, please. I ask you not to share this moment."</span>
+        
+        [<span class='main-char'>"Alright. Your secret is safe with me."</span>]<Response3|
+
+		(click:?Response3)[(replace:?Response4)[]\
+		<span class='office-worker'>"Many thanks."</span>\
+		(set:$office_worker_trust = $office_worker_trust + 1)\
+		]
+
+		[<span class='main-char'>"We’ll see. I might need to bring it up during my investigation."</span>]<Response4|
+
+		(click:?Response4)[(replace:?Response3)[]\
+		<span class='office-worker'>"… I understand. You must use everything at your disposal. Even at the expense of others, I suppose."</span>\
+		]]\
+]
+(if:$card is true)[\
+		[<span class='main-char'>"Do you recognize this card?"</span>]<Question7|
+        
+        (click:?Question7)[\
+        //You take the card you received from the person at the Lounge and Bar out of your pocket. You flip it, and the backside has an illustration of a pink haired singer.
+		The disheveled worker whips his eyes at the card. Their voice filled with excitement//
+		
+        <span class='office-worker'>"How did you acquire this card!?"</span>
+        
+        [<span class='main-char'>" No comment."</span>]<Response5|
+
+		(click:?Response5)[(replace:?Response6)[]\
+		<span class='office-worker'>"I understand the hesitation. On this card is none-other than THE Singer! Her radiance, her elegance, her rose-coloured grace! She is supported by the owner of this card: her benefactor!"</span>\
+		]
+
+		[<span class='main-char'>"Someone at the Lounge and Bar, earlier today."</span>]<Response6|
+
+		(click:?Response6)[(replace:?Response5)[]\
+		<span class='office-worker'>"Of course… I haven’t been there all day! Thank you, Detective!
+		This is the card of a non-other than THE Singer! On this card is none-other than THE Singer! Her radiance, her elegance, her rose-coloured grace! She is supported by the owner of this card: her benefactor!"</span>\
+        (set:$office_worker_trust = $office_worker_trust + 1)\
+		]]\
+]
+
+[<span class='main-char'>"Do you know this benefactor?"</span>]<Response|
+
+(click:?Response)[\
+(if:$trust < 3)[\
+		<span class='office-worker'>"I make time to aid them. I provide my knowledge and skills in supply chain lines, particularly in relation to fine jewelry and gems and the like. You could say I am indispensable, in that regard."
+		"I also see them at every one of the Singer’s performances. They are typically drinking something, minding their own business."</span>\
+]\
+(if:$trust >= 3)[\
+		<span class='office-worker'>"I also see them at every one of the Singer’s performances. They are typically drinking something, minding their own business."</span>\
+]]
+
+[<span class='main-char'>"I don’t have anything to ask."</span>]<Question8|
+
+(click:?Question8)[\
+<span class='office-worker'>"Allow me to continue to work."</span>
+(if:$trust < 3)[\
+		<span class='office-worker'>"Goodbye, detective."</span>\
+]\
+(if:$trust >= 3)[\
+		<span class='office-worker'>"Best wishes, detective."</span>\
+]]
 
 
 
@@ -1297,7 +1394,7 @@ Lia At Your Service\
 
 <span class='office-worker'>"Thank you for asking. Keep your questions short– less than 8 words. "
 "My responses are efficient. Please do not take any offense."</span>\
-(set:$office_worker_trust to 1)\
+(set:$office_worker_trust = $office_worker_trust + 1)\
 ]
 
 
@@ -1395,10 +1492,6 @@ interrogateMusic: https://static.wixstatic.com/mp3/b55364_f8f6a3059d0b43e29ced06
 jazzMusic: https://static.wixstatic.com/mp3/b55364_b61ad56b25c0426cb63ef7d61faf5ecc.mp3
 
 chillMusic: https://static.wixstatic.com/mp3/b55364_00e417f25db0410bb38ea721899129a3.mp3
-
-
-:: j {"position":"2925,650","size":"100,100"}
-
 
 
 :: lia {"position":"1125,875","size":"100,100"}
